@@ -1,3 +1,8 @@
+## To-do
+- [ ] Add images from device
+- [ ] Pop-ups for followers, following, photos
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
