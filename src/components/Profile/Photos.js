@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 
 const Photos = ({ photos }) => {
 	return (
-		<div className="h-full border-t border-gray-primary mt-12 pt-4">
-			<div className="grid grid-cols-3 gap-8 mt-4">
+		<div className="h-full border-t border-gray-primary mt-12 pt-4 mx-5 lg:mx-0">
+			<div className="grid grid-cols-3 gap-1 sm:gap-4 md:gap-6 lg:gap-8 mt-4">
 				{!photos ? (
 					new Array(12)
 						.fill(0)

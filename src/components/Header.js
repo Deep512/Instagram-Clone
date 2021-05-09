@@ -4,7 +4,7 @@ import UserContext from "../context/user";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 
-const Header = (props) => {
+const Header = () => {
 	const history = useHistory();
 	const { firebase } = useContext(FirebaseContext);
 	const { user } = useContext(UserContext);
@@ -12,7 +12,7 @@ const Header = (props) => {
 	return location.pathname !== "/login" && location.pathname !== "/signup" ? (
 		<header className="h-10 md:h-12 lg:h-14 bg-white border-b border-gray-primary mb-8 sticky top-0">
 			<div className="container mx-auto max-w-screen-lg h-full">
-				<div className="flex mx-14 md:mx-24 lg:mx-32 justify-between h-full">
+				<div className="flex sm:mx-14 md:mx-24 lg:mx-32 justify-between h-full">
 					<div className="text-gray-700 text-center flex items-center align-items cursor-pointer">
 						<h1 className="flex justify-center w-full">
 							<Link to={ROUTES.DASHBOARD} aria-label="Instagram logo">
