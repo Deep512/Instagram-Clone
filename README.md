@@ -1,6 +1,7 @@
 ## To-do
 - [ ] Add images from device
 - [ ] Pop-ups for followers, following, photos
+- [ ] Search bar
 
 
 # Getting Started with Create React App
