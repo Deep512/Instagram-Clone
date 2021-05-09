@@ -18,7 +18,7 @@ const Timeline = () => {
 				<Skeleton count={2} height={600} className="mb-10" />
 			) : photos?.length > 0 ? (
 				photos.map((content) => <Post key={content.docId} content={content} />)
-			) : user.following.length > 0 ? (
+			) : user?.following.length > 0 ? (
 				<p className="text-center text-2xl">No Posts Yet</p>
 			) : (
 				<p className="text-center text-2xl">Follow users to see photos</p>
