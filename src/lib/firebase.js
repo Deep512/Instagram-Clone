@@ -17,6 +17,5 @@ export const firebase = Firebase.initializeApp(config);
 export const { FieldValue } = Firebase.firestore;
 
 // call the seed file
-// console.log("firebase", firebase);
 
 // export default { firebase, FieldValue };

@@ -24,7 +24,6 @@ const Profile = ({ user }) => {
 	useEffect(() => {
 		async function getProfilePhotos() {
 			const photos = await getUserPhotosByUserId(user.userId);
-			console.log("photos", photos);
 			dispatch({
 				profile: user,
 				photosCollection: photos,

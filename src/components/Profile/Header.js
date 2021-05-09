@@ -6,7 +6,6 @@ import Skeleton from "react-loading-skeleton";
 
 const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
 	const { user } = useUser();
-	console.log("user", user);
 	const [isFollowing, setIsFollowing] = useState(false);
 	const followButton = user.username && profile.username !== user.username;
 

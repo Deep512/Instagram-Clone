@@ -9,7 +9,6 @@ const usePhotos = (props) => {
 		async function getTimelinePhotos() {
 			const [{ following }] = await getUserByUserID(user.uid);
 			let timelinePhotos = [];
-			console.log(following);
 			if (following.length > 0) {
 				timelinePhotos = await getPhotos(user.uid, following);
 				timelinePhotos.sort((a, b) => b.dateCreated - a.dateCreated);
