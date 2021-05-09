@@ -60,16 +60,6 @@ const Signup = (props) => {
 		} else {
 			setError("This username is already taken");
 		}
-
-		// try {
-
-		// 	await firebase.auth().createUserWithEmailAndPassword(email, password);
-		// 	history.push(ROUTES.DASHBOARD);
-		// } catch (error) {
-		// 	setEmail("");
-		// 	setPassword("");
-		// 	setError(error.message);
-		// }
 	};
 
 	return (

@@ -27,7 +27,7 @@ const SuggestedProfile = ({
 	};
 
 	return !followed ? (
-		<div className="flex flex-col sm:flex-row items-start sm:items-center sm:align-items justify-between sm:ml-2">
+		<div className="flex flex-row items-center align-items justify-between mx-24 sm:mx-0 sm:ml-2">
 			<div className="flex items-center justify-between">
 				<img
 					className="rounded-full h-5 md:h-7 lg:h-8 w-5 md:w-7 lg:w-8 flex mr-1 md:mr-2 lg:mr-3"

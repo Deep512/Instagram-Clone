@@ -5,9 +5,17 @@ import Suggestions from "./Suggestions";
 const Sidebar = (props) => {
 	const { user } = useUser();
 	const { fullName, username, userId, following, docId } = user;
-	return (
+	return window.innerWidth > 640 ? (
 		<div className="p-2 md:p-3 lg:p-4">
 			<User username={username} fullName={fullName} />
+			<Suggestions
+				userId={userId}
+				following={following}
+				loggedInUserDocId={docId}
+			/>
+		</div>
+	) : (
+		<div className="p-2 mx-auto md:p-3 lg:p-4">
 			<Suggestions
 				userId={userId}
 				following={following}

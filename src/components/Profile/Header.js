@@ -37,7 +37,7 @@ const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
 			<div className="container flex justify-center">
 				{profile.username && (
 					<img
-						className="rounded-full h-40 w-40 flex"
+						className="rounded-full h-28 sm:h-32 md:h-36 lg:h-40 w-28 sm:w-32 md:w-36 lg:w-40 flex"
 						src={`/images/avatars/${profile.username}.jpg`}
 						alt={`${profile.username} profile picture`}
 					/>
@@ -45,13 +45,15 @@ const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
 			</div>
 			<div className="flex items-center justify-center flex-col col-span-2">
 				<div className="container flex items-center">
-					<p className="text-2xl mr-4">{profile.username}</p>
+					<p className="text-lg md:text-xl lg:text-2xl mr-4">
+						{profile.username}
+					</p>
 					{followButton && isFollowing === null ? (
 						<Skeleton count={1} width={80} height={32} />
 					) : (
 						followButton && (
 							<button
-								className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8"
+								className="bg-blue-medium font-bold text-xs md:text-sm rounded text-white w-14 md:w-16 lg:w-20 h-6 sm:h-7 md:h-8"
 								type="button"
 								onClick={toggleFollowButton}
 								onKeyDown={(event) => {
@@ -70,15 +72,15 @@ const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
 						<Skeleton count={1} width={677} height={24} />
 					) : (
 						<>
-							<p className="mr-10">
+							<p className="text-xs sm:text-sm md:text-base mr-5 sm:mr-7 md:mr-9 lg:mr-10">
 								<span className="font-bold">{photosCnt}</span> photos
 							</p>
-							<p className="mr-10">
+							<p className="text-xs sm:text-sm md:text-base mr-5 sm:mr-7 md:mr-9 lg:mr-10">
 								<span className="font-bold">{followersCnt}</span>
 								{` `}
 								{followersCnt === 1 ? `follower` : `followers`}
 							</p>
-							<p className="mr-10">
+							<p className="text-xs sm:text-sm md:text-base mr-5 sm:mr-7 md:mr-9 lg:mr-10">
 								<span className="font-bold">{profile.following?.length}</span>{" "}
 								following
 							</p>
@@ -86,7 +88,7 @@ const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
 					)}
 				</div>
 				<div className="container mt-4">
-					<p className="font-medium">
+					<p className="text-sm md:text-base font-medium">
 						{!profile.fullName ? (
 							<Skeleton count={1} height={24} />
 						) : (

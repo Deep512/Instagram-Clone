@@ -22,7 +22,7 @@ const Suggestions = ({ userId, following, loggedInUserDocId }) => {
 		<Skeleton count={1} height={150} className="mt-5" />
 	) : profiles.length > 0 ? (
 		<div className="rounded flex flex-col">
-			<div className="text-xs md:text-sm flex items-center align-items justify-between mb-2">
+			<div className="text-xs md:text-sm flex items-center mx-auto sm:mx-0 align-items justify-between mb-4 sm:mb-2 mt-5 sm:mt-0">
 				<p className="font-bold text-gray-base">Suggestions for you</p>
 			</div>
 			<div className="mt-1 md:mt-2 lg:mt-3 grid gap-5">
@@ -47,23 +47,3 @@ Suggestions.propTypes = {
 	userId: PropTypes.string,
 	following: PropTypes.array,
 };
-
-// return (
-// 	<Link
-// 		key={idx}
-// 		to={`/p/${user.username}`}
-// 		className="grid grid-cols-4 gap-4 mb-6 items-center"
-// 	>
-// 		<div className="flex items-center justify-between col-span-1">
-// 			<img
-// 				className="rounded-full w-16 flex mr-3"
-// 				src={`/images/avatars/${user.username}.jpg`}
-// 				alt="DP"
-// 			/>
-// 		</div>
-// 		<div className="col-span-3">
-// 			<p className="font-bold text-sm">{user.username}</p>
-// 			<p className="text-sm">{user.fullName}</p>
-// 		</div>
-// 	</Link>
-// );

@@ -16,12 +16,12 @@ const Photos = ({ photos }) => {
 							<img src={photo.imageSrc} alt={photo.caption} />
 
 							<div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-								<p className="flex items-center text-white font-bold">
+								<p className="flex items-center text-sm sm:text-base text-white font-bold">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 20 20"
 										fill="currentColor"
-										className="w-8 mr-4"
+										className="w-6 sm:w-7 md:w-8 mr-2 sm:mr-3 md:mr-4"
 									>
 										<path
 											fillRule="evenodd"
@@ -32,12 +32,12 @@ const Photos = ({ photos }) => {
 									{photo.likes.length}
 								</p>
 
-								<p className="flex items-center text-white font-bold">
+								<p className="flex items-center text-sm sm:text-base text-white font-bold">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 20 20"
 										fill="currentColor"
-										className="w-8 mr-4"
+										className="w-6 sm:w-7 md:w-8 mr-2 sm:mr-3 md:mr-4"
 									>
 										<path
 											fillRule="evenodd"
@@ -51,13 +51,11 @@ const Photos = ({ photos }) => {
 						</div>
 					))
 				) : (
-					<p className="col-span-3 text-center text-2xl">No Posts Yet</p>
+					<p className="col-span-3 text-center text-base sm:text-lg md:text-xl lg:text-2xl">
+						No Posts Yet
+					</p>
 				)}
 			</div>
-
-			{/* {photos?.length === 0 && (
-				<p className="text-center text-2xl">No Posts Yet</p>
-			)} */}
 		</div>
 	);
 };
