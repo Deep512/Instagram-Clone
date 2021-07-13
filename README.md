@@ -4,9 +4,9 @@ The app is deployed using Vercel at : https://instagram-clone-seven-mocha.vercel
 
 ## Tools and Technologies Used:
 ```
-React (FrontEnd)
-Firebase (Database)
-TailwindCSS (CSS)
+- React (FrontEnd)
+- Firebase (Database)
+- TailwindCSS (CSS)
 ```
 
 ## To-do
