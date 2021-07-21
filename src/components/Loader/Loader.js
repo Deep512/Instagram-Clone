@@ -1,5 +1,5 @@
 import "./Loader.css";
-const Loader = (props) => {
+const Loader = ({}) => {
 	return <div className="loader"></div>;
 };
 
