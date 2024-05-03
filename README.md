@@ -15,10 +15,6 @@ A web application clone of Instagram built using React, Firebase, and Tailwind C
 
 You can access the live demo of the project [here](https://instagram-clone-deep512.vercel.app/).
 
-🚨 **Attention Visitors:** 🚨
-
-Oh no! It seems like our website is so dangerously cool that even Chrome thinks it might be up to no good. But fear not, brave adventurer! We promise there are no dragons lurking here, just some awesome content waiting to be explored.
-
 **Disclaimer:** Our website may trigger Chrome's "Dangerous site" warning, but rest assured, it's perfectly safe to explore. We won't ask for your password, phone number, or credit card details. Scout's honor!
 
 So, grab your virtual sword and shield, and let's embark on this epic journey together!
