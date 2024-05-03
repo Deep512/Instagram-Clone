@@ -2,9 +2,6 @@
 
 A web application clone of Instagram built using React, Firebase, and Tailwind CSS.
 <br />
-The app is deployed using Vercel at : https://instagram-clone-deep512.vercel.app/
-<br />
-**Note:** The website might show security error because the dependencies haven't been updated in a long time
 
 ## Features
 
@@ -13,6 +10,20 @@ The app is deployed using Vercel at : https://instagram-clone-deep512.vercel.app
 - **Like and Comment**: Users can like posts and leave comments on them.
 - **Real-time Updates**: Posts and their associated likes and comments are updated in real-time using Firebase Firestore.
 - **Responsive Design**: The application is fully responsive, ensuring a seamless experience across devices.
+
+## Demo
+
+You can access the live demo of the project [here](https://instagram-clone-deep512.vercel.app/).
+
+🚨 **Attention Visitors:** 🚨
+
+Oh no! It seems like our website is so dangerously cool that even Chrome thinks it might be up to no good. But fear not, brave adventurer! We promise there are no dragons lurking here, just some awesome content waiting to be explored.
+
+**Disclaimer:** Our website may trigger Chrome's "Dangerous site" warning, but rest assured, it's perfectly safe to explore. We won't ask for your password, phone number, or credit card details. Scout's honor!
+
+So, grab your virtual sword and shield, and let's embark on this epic journey together!
+
+Happy browsing! 🛡️🔮
 
 ## Installation
 
