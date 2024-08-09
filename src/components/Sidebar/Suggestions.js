@@ -1,22 +1,21 @@
-import { useState, useEffect, useContext } from "react";
-import FirebaseContext from "../../context/firebase";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { getSuggestedProfiles } from "../../services/firebase";
-import Skeleton from "react-loading-skeleton";
-import SuggestedProfile from "./SuggestedProfile";
+import { useState, useEffect, useContext } from "react"
+import FirebaseContext from "../../context/firebase"
+import { Link } from "react-router-dom"
+import PropTypes from "prop-types"
+import { getSuggestedProfiles } from "../../services/firebase"
+import Skeleton from "react-loading-skeleton"
+import SuggestedProfile from "./SuggestedProfile"
 const Suggestions = ({ userId, following, loggedInUserDocId }) => {
-	const [profiles, setProfiles] = useState(null);
-	const { firebase } = useContext(FirebaseContext);
+	const [profiles, setProfiles] = useState(null)
 
 	useEffect(() => {
 		async function suggestedProfiles() {
-			const response = await getSuggestedProfiles(userId, following);
-			setProfiles(response);
+			const response = await getSuggestedProfiles(userId, following)
+			setProfiles(response)
 		}
 
-		if (userId) suggestedProfiles();
-	}, [userId]);
+		if (userId) suggestedProfiles()
+	}, [userId])
 
 	return !userId || !profiles ? (
 		<Skeleton count={1} height={150} className="mt-5" />
@@ -38,12 +37,12 @@ const Suggestions = ({ userId, following, loggedInUserDocId }) => {
 				))}{" "}
 			</div>
 		</div>
-	) : null;
-};
+	) : null
+}
 
-export default Suggestions;
+export default Suggestions
 
 Suggestions.propTypes = {
 	userId: PropTypes.string,
 	following: PropTypes.array,
-};
+}

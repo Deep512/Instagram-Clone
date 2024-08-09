@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import FirebaseContext from "../context/firebase";
-import UserContext from "../context/user";
-import { Link, useHistory, useLocation } from "react-router-dom";
-import * as ROUTES from "../constants/routes";
+import React, { useContext } from "react"
+import FirebaseContext from "../context/firebase"
+import UserContext from "../context/user"
+import { Link, useHistory, useLocation } from "react-router-dom"
+import * as ROUTES from "../constants/routes"
 
 const Header = () => {
-	const history = useHistory();
-	const { firebase } = useContext(FirebaseContext);
-	const { user } = useContext(UserContext);
-	const location = useLocation();
+	const history = useHistory()
+	const { firebase } = useContext(FirebaseContext)
+	const { user } = useContext(UserContext)
+	const location = useLocation()
 	return location.pathname !== "/login" && location.pathname !== "/signup" ? (
 		<header className="h-10 md:h-12 lg:h-14 bg-white border-b border-gray-primary mb-8 sticky top-0">
 			<div className="container mx-auto max-w-screen-lg h-full">
@@ -50,12 +50,12 @@ const Header = () => {
 									type="button"
 									title="Log Out"
 									onClick={() => {
-										firebase.auth().signOut();
-										history.push(ROUTES.LOGIN);
+										firebase.auth().signOut()
+										history.push(ROUTES.LOGIN)
 									}}
 									onKeyDown={(event) => {
 										if (event.key === "Enter") {
-											firebase.auth().signOut();
+											firebase.auth().signOut()
 										}
 									}}
 								>
@@ -108,6 +108,6 @@ const Header = () => {
 				</div>
 			</div>
 		</header>
-	) : null;
-};
-export default Header;
+	) : null
+}
+export default Header

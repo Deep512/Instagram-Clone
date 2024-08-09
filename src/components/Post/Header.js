@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom"
+import PropTypes from "prop-types"
 
 const Header = ({ username }) => {
 	return (
@@ -15,11 +15,11 @@ const Header = ({ username }) => {
 				</Link>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header
 
 Header.propTypes = {
 	username: PropTypes.string.isRequired,
-};
+}

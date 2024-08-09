@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import useUser from "../../hooks/use-user";
-import { toggleFollow } from "../../services/firebase";
-import Skeleton from "react-loading-skeleton";
+import React, { useState, useEffect } from "react"
+import PropTypes from "prop-types"
+import useUser from "../../hooks/use-user"
+import { toggleFollow } from "../../services/firebase"
+import { ModalType } from "./constants"
+import Skeleton from "react-loading-skeleton"
 
-const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
-	const { user } = useUser();
-	const [isFollowing, setIsFollowing] = useState(false);
-	const followButton = user.username && profile.username !== user.username;
+const Header = ({
+	profile,
+	photosCnt,
+	followersCnt,
+	setFollowersCnt,
+	setModalType,
+	setShowModal,
+}) => {
+	const { user } = useUser()
+	const [isFollowing, setIsFollowing] = useState(false)
+	const followButton = user.username && profile.username !== user.username
 
 	const toggleFollowButton = async () => {
 		await toggleFollow(
@@ -16,21 +24,26 @@ const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
 			user.userId,
 			profile.userId,
 			isFollowing
-		);
+		)
 		setFollowersCnt({
 			followersCnt: isFollowing ? followersCnt - 1 : followersCnt + 1,
-		});
-		setIsFollowing((isFollowing) => !isFollowing);
-	};
+		})
+		setIsFollowing((isFollowing) => !isFollowing)
+	}
 
 	useEffect(() => {
 		function checkIfFollowing() {
 			if (profile.followers?.includes(user.userId)) {
-				setIsFollowing(true);
+				setIsFollowing(true)
 			}
 		}
-		if (user.userId) checkIfFollowing();
-	}, [user.userId, profile.userId, profile.followers]);
+		if (user.userId) checkIfFollowing()
+	}, [user.userId, profile.userId, profile.followers])
+
+	const handleModalClick = (type) => {
+		setShowModal(true)
+		setModalType(type)
+	}
 
 	return (
 		<div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
@@ -58,7 +71,7 @@ const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
 								onClick={toggleFollowButton}
 								onKeyDown={(event) => {
 									if (event.key === "Enter") {
-										toggleFollowButton();
+										toggleFollowButton()
 									}
 								}}
 							>
@@ -75,12 +88,18 @@ const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
 							<p className="text-xs sm:text-sm md:text-base mr-5 sm:mr-7 md:mr-9 lg:mr-10">
 								<span className="font-bold">{photosCnt}</span> photos
 							</p>
-							<p className="text-xs sm:text-sm md:text-base mr-5 sm:mr-7 md:mr-9 lg:mr-10">
+							<p
+								className="text-xs sm:text-sm md:text-base mr-5 sm:mr-7 md:mr-9 lg:mr-10 hover:opacity-50 cursor-pointer"
+								onClick={() => handleModalClick(ModalType.FOLLOWERS)}
+							>
 								<span className="font-bold">{followersCnt}</span>
 								{` `}
 								{followersCnt === 1 ? `follower` : `followers`}
 							</p>
-							<p className="text-xs sm:text-sm md:text-base mr-5 sm:mr-7 md:mr-9 lg:mr-10">
+							<p
+								className="text-xs sm:text-sm md:text-base mr-5 sm:mr-7 md:mr-9 lg:mr-10 hover:opacity-50 cursor-pointer"
+								onClick={() => handleModalClick(ModalType.FOLLOWING)}
+							>
 								<span className="font-bold">{profile.following?.length}</span>{" "}
 								following
 							</p>
@@ -98,10 +117,10 @@ const Header = ({ profile, photosCnt, followersCnt, setFollowersCnt }) => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header
 
 Header.propTypes = {
 	profile: PropTypes.shape({
@@ -117,4 +136,6 @@ Header.propTypes = {
 	photosCnt: PropTypes.number.isRequired,
 	followersCnt: PropTypes.number.isRequired,
 	setFollowersCnt: PropTypes.func.isRequired,
-};
+	setModalType: PropTypes.func.isRequired,
+	setShowModal: PropTypes.func.isRequired,
+}

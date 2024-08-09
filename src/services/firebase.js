@@ -1,13 +1,13 @@
-import { firebase, FieldValue } from "../lib/firebase";
+import { firebase, FieldValue } from "../lib/firebase"
 
 export default async function doesUsernameExist(username) {
 	const result = await firebase
 		.firestore()
 		.collection("users")
 		.where("username", "==", username)
-		.get();
+		.get()
 
-	return result.docs.length === 1;
+	return result.docs.length === 1
 }
 
 export async function getUserByUsername(username) {
@@ -15,12 +15,12 @@ export async function getUserByUsername(username) {
 		.firestore()
 		.collection("users")
 		.where("username", "==", username)
-		.get();
+		.get()
 
 	return result.docs.map((item) => ({
 		...item.data(),
 		docId: item.id,
-	}));
+	}))
 }
 
 export async function getUserByUserID(userId) {
@@ -28,17 +28,17 @@ export async function getUserByUserID(userId) {
 		.firestore()
 		.collection("users")
 		.where("userId", "==", userId)
-		.get();
+		.get()
 
 	const user = result.docs.map((item) => ({
 		...item.data(),
 		docId: item.id,
-	}));
-	return user;
+	}))
+	return user
 }
 
 export async function getSuggestedProfiles(userId, following) {
-	const result = await firebase.firestore().collection("users").limit(10).get();
+	const result = await firebase.firestore().collection("users").limit(10).get()
 
 	const suggestedProfiles = result.docs
 		.map((item) => ({
@@ -47,9 +47,9 @@ export async function getSuggestedProfiles(userId, following) {
 		}))
 		.filter(
 			(item) => item.userId !== userId && !following.includes(item.userId)
-		);
+		)
 
-	return suggestedProfiles;
+	return suggestedProfiles
 }
 
 export async function toggleLoggedInUserFollowing(
@@ -65,7 +65,7 @@ export async function toggleLoggedInUserFollowing(
 			following: isFollowing
 				? FieldValue.arrayRemove(profileId)
 				: FieldValue.arrayUnion(profileId),
-		});
+		})
 }
 
 export async function toggleFollowedUserFollowers(
@@ -81,7 +81,7 @@ export async function toggleFollowedUserFollowers(
 			followers: wasFollowing
 				? FieldValue.arrayRemove(loggedInUserId)
 				: FieldValue.arrayUnion(loggedInUserId),
-		});
+		})
 }
 
 export async function toggleFollow(
@@ -91,8 +91,8 @@ export async function toggleFollow(
 	profileId,
 	isFollowing
 ) {
-	await toggleLoggedInUserFollowing(loggedInUserDocId, profileId, isFollowing);
-	await toggleFollowedUserFollowers(profileDocId, loggedInUserId, isFollowing);
+	await toggleLoggedInUserFollowing(loggedInUserDocId, profileId, isFollowing)
+	await toggleFollowedUserFollowers(profileDocId, loggedInUserId, isFollowing)
 }
 
 export async function getPhotos(userId, following) {
@@ -100,26 +100,26 @@ export async function getPhotos(userId, following) {
 		.firestore()
 		.collection("photos")
 		.where("userId", "in", following)
-		.get();
+		.get()
 
 	const userFollowedPhotos = result.docs.map((photo) => ({
 		...photo.data(),
 		docId: photo.id,
-	}));
+	}))
 
 	const photosWithUserDetails = await Promise.all(
 		userFollowedPhotos.map(async (photo) => {
-			let likedByUser = false;
+			let likedByUser = false
 			if (photo.likes.includes(userId)) {
-				likedByUser = true;
+				likedByUser = true
 			}
-			const user = await getUserByUserID(photo.userId);
-			const { username } = user[0];
-			return { username, ...photo, likedByUser };
+			const user = await getUserByUserID(photo.userId)
+			const { username } = user[0]
+			return { username, ...photo, likedByUser }
 		})
-	);
+	)
 
-	return photosWithUserDetails;
+	return photosWithUserDetails
 }
 
 export async function getUserPhotosByUserId(userId) {
@@ -127,12 +127,12 @@ export async function getUserPhotosByUserId(userId) {
 		.firestore()
 		.collection("photos")
 		.where("userId", "==", userId)
-		.get();
+		.get()
 
 	const photos = result.docs.map((photo) => ({
 		...photo.data(),
 		docId: photo.id,
-	}));
+	}))
 
-	return photos;
+	return photos
 }

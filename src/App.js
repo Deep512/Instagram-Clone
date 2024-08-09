@@ -1,22 +1,24 @@
-import { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import * as ROUTES from "./constants/routes";
-import UserContext from "./context/user";
-import useAuthListener from "./hooks/use-auth-listener";
+import { lazy, Suspense, useState } from "react"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import * as ROUTES from "./constants/routes"
+import UserContext from "./context/user"
+import useAuthListener from "./hooks/use-auth-listener"
 
-import ProtectedRoute from "./helpers/protected-route";
-import IsUserLoggedIn from "./helpers/is-user-logged-in";
-import Loader from "./components/Loader/Loader";
-import Header from "./components/Header";
+import ProtectedRoute from "./helpers/protected-route"
+import IsUserLoggedIn from "./helpers/is-user-logged-in"
+import Loader from "./components/Loader/Loader"
+import Header from "./components/Header"
+import CustomModal from "./components/Profile/Modal"
 
-const Login = lazy(() => import("./pages/login"));
-const Signup = lazy(() => import("./pages/signup"));
-const Profile = lazy(() => import("./pages/profile"));
-const Dashboard = lazy(() => import("./pages/dashboard"));
-const NotFound = lazy(() => import("./pages/not-found"));
+const Login = lazy(() => import("./pages/login"))
+const Signup = lazy(() => import("./pages/signup"))
+const Profile = lazy(() => import("./pages/profile"))
+const Dashboard = lazy(() => import("./pages/dashboard"))
+const NotFound = lazy(() => import("./pages/not-found"))
 
 function App() {
-	const { user } = useAuthListener();
+	const { user } = useAuthListener()
+	const [open, setOpen] = useState(false)
 
 	return (
 		<UserContext.Provider value={{ user }}>
@@ -49,9 +51,10 @@ function App() {
 						<Route component={NotFound} />
 					</Switch>
 				</Suspense>
+				<CustomModal open={open} modalType="" setOpen={setOpen} />
 			</Router>
 		</UserContext.Provider>
-	);
+	)
 }
 
-export default App;
+export default App
